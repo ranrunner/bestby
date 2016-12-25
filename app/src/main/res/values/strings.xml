@@ -1,0 +1,29 @@
+<resources>
+    <!-- app -->
+    <string name="app_name">Best By</string>
+    <string name="id_prefix">ID</string>
+    <string name="no_value">--</string>
+
+    <!-- activity_list.xml -->
+    <string name="no_items">No items</string>
+    <string name="add_item">ADD ITEM</string>
+
+    <!-- activity_add.xml -->
+    <string name="add_name">Adding item</string>
+    <string name="itemname_enter">Enter name of item</string>
+    <string name="date_select">SELECT DATE</string>
+    <string name="month">MONTH</string>
+    <string name="day">DAY</string>
+    <string name="year">YEAR</string>
+    <string name="add">ADD</string>
+
+    <!-- activity_remove.xml -->
+    <string name="remove_name">Removing item</string>
+    <string name="bestby_label">DATE ITEM IS BEST BY</string>
+    <string name="remove">REMOVE</string>
+
+    <!-- list_item.xml -->
+    <string name="itemtext_inlist">Item name</string>
+    <string name="datetext_inlist">Item date</string>
+
+</resources>
