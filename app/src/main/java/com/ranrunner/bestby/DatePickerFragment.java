@@ -41,5 +41,9 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
         ((AddActivity)getActivity()).monthText.setText(Integer.toString(month + 1));
         ((AddActivity)getActivity()).dayText.setText(Integer.toString(day));
         ((AddActivity)getActivity()).yearText.setText(Integer.toString(year));
+
+        // set boolean to true
+        // signify that user has selected date
+        ((AddActivity)getActivity()).isDateSelected = true;
     }
 }

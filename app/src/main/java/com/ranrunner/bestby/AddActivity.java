@@ -17,6 +17,10 @@ public class AddActivity extends AppCompatActivity {
     // EditText object (user-entered item)
     EditText itemName;
 
+    // boolean to determine if user has selected date
+    // set initial value to false
+    Boolean isDateSelected = false;
+
     // date value in UTC milliseconds (to store into database)
     long utcMS = 0;
 
@@ -50,17 +54,34 @@ public class AddActivity extends AppCompatActivity {
 
     public void add(View view) {
 
-        // add item using database handler
-        Item item = new Item();
-        item.setItem(itemName.getText().toString());
-        item.setDate(Long.toString(utcMS));
-        handler.addItem(item);
+        // input validation
+        // user has to provide item name and date before line 77 executes
+        if (itemName.getText().toString().isEmpty() && isDateSelected == false) {
+            Toast.makeText(getApplicationContext(), "Item name and date are not set", Toast.LENGTH_LONG).show();
+        }
 
-        // display toast that item has been added to list
-        Toast.makeText(getApplicationContext(), "Item added", Toast.LENGTH_LONG).show();
+        else if (itemName.getText().toString().isEmpty()) {
+            Toast.makeText(getApplicationContext(), "Item name is not set", Toast.LENGTH_LONG).show();
+        }
 
-        // return to previous activity (ListActivity)
-        Intent intent = new Intent(this, ListActivity.class);
-        startActivity(intent);
+        else if (isDateSelected == false) {
+            Toast.makeText(getApplicationContext(), "Date is not set", Toast.LENGTH_LONG).show();
+        }
+
+        else {
+
+            // add item using database handler
+            Item item = new Item();
+            item.setItem(itemName.getText().toString());
+            item.setDate(Long.toString(utcMS));
+            handler.addItem(item);
+
+            // display toast that item has been added to list
+            Toast.makeText(getApplicationContext(), "Item added", Toast.LENGTH_LONG).show();
+
+            // return to previous activity (ListActivity)
+            Intent intent = new Intent(this, ListActivity.class);
+            startActivity(intent);
+        }
     }
 }

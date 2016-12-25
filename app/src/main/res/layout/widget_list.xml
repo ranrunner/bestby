@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_light" >
+
+    <TextView
+        android:id="@+id/widget_emptylabel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/no_items"
+        android:textAppearance="@android:style/TextAppearance.Material.Large"
+        android:textColor="@android:color/darker_gray"
+        android:gravity="center"
+        android:layout_alignBottom="@+id/widget_itemslist" />
+
+    <ListView
+        android:id="@+id/widget_itemslist"
+        android:layout_width="match_parent"
+        android:layout_height="465dp" />
+
+    <Button
+        android:id="@+id/widget_openapp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/widget_openapp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:onClick="addItem" />
+
+</RelativeLayout>
