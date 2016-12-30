@@ -31,8 +31,8 @@ public class ListActivity extends AppCompatActivity {
 
         // populate ListView with items from database
         handler = new DatabaseHandler(this);
-        db = handler.getWritableDatabase();
-        listCursor = db.rawQuery("SELECT * FROM Items ORDER BY date", null);
+        db = handler.getReadableDatabase();
+        listCursor = db.rawQuery("SELECT * FROM " + handler.getTableItems() + " ORDER BY date", null);
         lv = (ListView)findViewById(R.id.items_list);
         listAdapter = new ListCursorAdapter(this, listCursor);
         lv.setAdapter(listAdapter);

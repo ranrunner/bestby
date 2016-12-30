@@ -59,4 +59,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 new String[] { String.valueOf(item.getID()) }); // delete by ID
         db.close();                                             // close connection
     }
+
+    String getTableItems() { return TABLE_ITEMS; }              // get TABLE_ITEMS table name
+    String getKeyId() { return KEY_ID; }                        // get KEY_ID column name
+    String getKeyItem() { return KEY_ITEM; }                    // get KEY_ITEM column name
+    String getKeyDate() { return KEY_DATE; }                    // get KEY_DATE column name
 }

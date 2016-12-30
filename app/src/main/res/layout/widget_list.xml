@@ -20,10 +20,10 @@
         android:layout_height="465dp" />
 
     <Button
-        android:id="@+id/widget_openapp"
+        android:id="@+id/widget_launchapp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/widget_openapp"
+        android:text="@string/widget_launchapp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:onClick="addItem" />

@@ -6,7 +6,7 @@
     <string name="no_value">--</string>
 
     <!-- widget -->
-    <string name="widget_openapp">OPEN APP</string>
+    <string name="widget_launchapp">LAUNCH APP</string>
 
     <!-- activity_list.xml -->
     <string name="no_items">No items</string>
