@@ -8,7 +8,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 // method that will provide data to collection
@@ -49,6 +51,7 @@ public class ItemViewsFactory implements RemoteViewsService.RemoteViewsFactory {
         return count;
     }
 
+    // set data in list for each position
     public RemoteViews getViewAt(int position) {
         rv.setTextViewText(R.id.item_inList, itemList.get(position).getItem());
         rv.setTextViewText(R.id.date_inList, itemList.get(position).getDate());
@@ -92,14 +95,26 @@ public class ItemViewsFactory implements RemoteViewsService.RemoteViewsFactory {
         // add data from cursor to list
         cursor.moveToFirst();
         do {
+
+            // convert milliseconds to date format
+            SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(Long.parseLong(cursor.getString(cursor.getColumnIndex(handler.getKeyDate()))));
+
+            // set values
             String itemColumn = cursor.getString(cursor.getColumnIndex(handler.getKeyItem()));
-            String dateColumn = cursor.getString(cursor.getColumnIndex(handler.getKeyDate()));
+            String dateColumn = formatter.format(calendar.getTime());
             int idColumn = cursor.getInt(cursor.getColumnIndex(handler.getKeyId()));
+
+            // make item object empty
             item = new Item();
 
+            // add values to item object
             item.setItem(itemColumn);
             item.setDate(dateColumn);
             item.setID(idColumn);
+
+            // add item to itemList
             itemList.add(item);
         } while (cursor.moveToNext());
     }
