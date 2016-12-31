@@ -8,20 +8,22 @@
     <TextView
         android:id="@+id/item_inList"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="29dp"
         android:text="@string/itemtext_inlist"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_marginStart="5dp" />
+        android:layout_marginStart="5dp"
+        android:textColor="@android:color/black" />
 
     <TextView
         android:id="@+id/date_inList"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="20dp"
         android:text="@string/datetext_inlist"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_marginStart="5dp"
         android:layout_below="@+id/item_inList"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="@android:color/darker_gray" />
 
     <TextView
         android:id="@+id/idprefix_inList"
