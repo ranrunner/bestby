@@ -6,7 +6,8 @@ The goal of the app is to:<br />
 
 The user interacts with:<br />
 * a scrollable list view that shows each item with its best by date
-* activities (screens) that let the user add and remove items<br /><br />
+* activities (screens) that let the user add and remove items
+* an optional launcher widget that displays the same scrollable list view<br /><br />
 
 Java source files
 -----------------
