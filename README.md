@@ -19,8 +19,8 @@ Java source files
 * <b>ListActivity.java</b> -- this supports the main activity (main screen with scrollable list)
 * <b>ListCursorAdapter.java</b> -- this enables the user to see a populated list view
 * <b>ListWidget.java</b> -- this populates the list view on the launcher widget
-* <b>RemoveActivity.java</b> -- this supports the activity that lets the user remove an item<br /><br />
-* <b>WidgetService.java</b> -- this provides a factory to be bound to the collection service
+* <b>RemoveActivity.java</b> -- this supports the activity that lets the user remove an item
+* <b>WidgetService.java</b> -- this provides a factory to be bound to the collection service<br /><br />
 
 Layout resource files
 ---------------------
@@ -29,8 +29,8 @@ These are XML files that specify the UI for each activity.<br /> <br />
 * <b>activity_add.xml</b> -- linked with AddActivity.java
 * <b>activity_list.xml</b> -- linked with ListActivity.java
 * <b>activity_remove.xml</b> -- linked with RemoveActivity.java
-* <b>list_item.xml</b> -- fragment that specifies the layout for each element in the list view<br /><br />
-* <b>widget_list.xml</b> -- specifies the layout for the launcher widget
+* <b>list_item.xml</b> -- fragment that specifies the layout for each element in the list view
+* <b>widget_list.xml</b> -- specifies the layout for the launcher widget<br /><br />
 
 String values
 -------------
