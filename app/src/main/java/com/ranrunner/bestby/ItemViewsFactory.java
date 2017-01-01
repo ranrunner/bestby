@@ -63,9 +63,12 @@ public class ItemViewsFactory implements RemoteViewsService.RemoteViewsFactory {
         extras.putString("ITEM_EXTRA", itemList.get(position).getItem());
         extras.putString("DATE_EXTRA", itemList.get(position).getDate());
         extras.putString("ID_EXTRA", String.valueOf(itemList.get(position).getID()));
+        extras.putString("FROM_WIDGET", "true");
         intent.putExtras(extras);
 
+        // make item and date clickable
         rv.setOnClickFillInIntent(R.id.item_inList, intent);
+        rv.setOnClickFillInIntent(R.id.date_inList, intent);
 
         return rv;
     }

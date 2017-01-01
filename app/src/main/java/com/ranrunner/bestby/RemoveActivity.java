@@ -17,6 +17,9 @@ public class RemoveActivity extends AppCompatActivity {
     TextView idText;
     TextView dateText;
 
+    // boolean to determine if user loaded RemoveActivity from widget
+    Boolean isFromWidget = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +37,9 @@ public class RemoveActivity extends AppCompatActivity {
         itemText.setText(getIntent().getStringExtra("ITEM_EXTRA"));
         idText.setText(getIntent().getStringExtra("ID_EXTRA"));
         dateText.setText(getIntent().getStringExtra("DATE_EXTRA"));
+
+        // set isFromWidget if necessary
+        isFromWidget = Boolean.valueOf(getIntent().getStringExtra("FROM_WIDGET"));
     }
 
     public void remove(View view) {
@@ -45,7 +51,18 @@ public class RemoveActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "Item removed", Toast.LENGTH_LONG).show();
 
         // return to previous activity (ListActivity)
-        Intent intent = new Intent(this, ListActivity.class);
-        startActivity(intent);
+        // if user loaded this activity from app
+        if (isFromWidget == false) {
+            Intent intent = new Intent(this, ListActivity.class);
+            startActivity(intent);
+        }
+
+        // return to widget (ListWidget)
+        // if user loaded this activity from widget
+        else {
+
+            // equivalent of pressing back button on bottom navigation
+            super.onBackPressed();
+        }
     }
 }
