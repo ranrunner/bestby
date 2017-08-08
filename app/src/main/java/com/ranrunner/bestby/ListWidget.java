@@ -39,21 +39,19 @@ public class ListWidget extends AppWidgetProvider {
             Intent intent_item = new Intent(context, RemoveActivity.class);
             PendingIntent pending_item = PendingIntent.getActivity(context, 0, intent_item, PendingIntent.FLAG_UPDATE_CURRENT);
             rv.setPendingIntentTemplate(R.id.widget_itemslist, pending_item);
-            appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds[ins], R.id.widget_itemslist);
 
-            // configure button to open app from widget
+            // configure button to launch app from widget
             Intent intent_launchApp = new Intent(context, ListActivity.class);
             PendingIntent pending_launchApp = PendingIntent.getActivity(context, 0, intent_launchApp, 0);
             rv.setOnClickPendingIntent(R.id.widget_launchapp, pending_launchApp);
-            appWidgetManager.updateAppWidget(appWidgetIds, rv);
 
-            // configure remove button to sync ListView on widget with database
-            Intent intent_listSync = new Intent(context, ListWidget.class);
-            intent_listSync.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
-            intent_listSync.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetIds[ins]);
-            PendingIntent pending_listSync = PendingIntent.getBroadcast(context, 0, intent_listSync, PendingIntent.FLAG_UPDATE_CURRENT);
-            rv.setOnClickPendingIntent(R.id.remove_button, pending_listSync);
-            appWidgetManager.updateAppWidget(appWidgetIds, rv);
+            // configure button to sync widget with database
+            Intent intent_sync = new Intent(context, ListWidget.class);
+            intent_sync.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+            intent_sync.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds);
+            PendingIntent pending_sync = PendingIntent.getBroadcast(context, 0, intent_sync, 0);
+            rv.setOnClickPendingIntent(R.id.widget_sync, pending_sync);
+            appWidgetManager.updateAppWidget(new ComponentName(context, ListWidget.class), rv);
 
             // execute update of instances
             appWidgetManager.updateAppWidget(appWidgetIds[ins], rv);
@@ -62,19 +60,21 @@ public class ListWidget extends AppWidgetProvider {
         super.onUpdate(context, appWidgetManager, appWidgetIds);
     }
 
-    // line 54 calls this method
     @Override
     public void onReceive(Context context, Intent intent) {
 
         super.onReceive(context, intent);
 
-        Bundle extras  = intent.getExtras();
+        if(intent.getAction().equals(AppWidgetManager.ACTION_APPWIDGET_UPDATE)) {
+            Bundle extras = intent.getExtras();
 
-        if (extras != null) {
-            AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
-            ComponentName appWidget = new ComponentName(context.getPackageName(), ListWidget.class.getName());
-            int[] appWidgetIds = appWidgetManager.getAppWidgetIds(appWidget);
-            onUpdate(context, appWidgetManager, appWidgetIds);
+            if (extras != null) {
+                int[] appWidgetIds = extras.getIntArray(AppWidgetManager.EXTRA_APPWIDGET_IDS);
+
+                if (appWidgetIds != null && appWidgetIds.length > 0) {
+                    this.onUpdate(context, AppWidgetManager.getInstance(context), appWidgetIds);
+                }
+            }
         }
     }
 
